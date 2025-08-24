@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-print("Welcome to the OSINT User ID Fetcher!")
+print("Welcome to the OSINT User ID searcher!")
 
 u = input("Type user id: ")
 a = input("Type the Users Bday: ")
@@ -25,7 +25,7 @@ def check_user_ids(user_ids):
             ("Threads", f"https://www.threads.net/@{u}"),
             ("GitHub", f"https://www.github.com/{u}"),
             ("TikTok", f"https://www.tiktok.com/@{u}"),
-            ("Twitter", f"https://www.twitter.com/{u}"),
+            ("X", f"https://www.x.com/{u}"),
             ("Reddit", f"https://www.reddit.com/user/{u}"),
             ("LinkedIn", f"https://www.linkedin.com/in/{u}"),
             ("Pinterest", f"https://www.pinterest.com/{u}"),
@@ -149,6 +149,19 @@ def check_user_ids(user_ids):
                     else:
                         print(f"[-] {platform}: Not found.")
 
+                elif platform == "X":
+                    if ("There is no such account" in page or
+                        soup.find(string="There is no such account")):
+                        print(f"[-] {platform}: Not found.")
+                    elif ("Account suspended" in page or
+                        soup.find("font", string="There is no such account") or 
+                        soup.find("span", string="Account suspended")):
+                        print(f"[-] {platform}: Not found.")
+                    elif 200 <= response.status_code < 300:
+                        print(f"[+] {platform}: Found! {url}")
+                    else:
+                        print(f"[-] {platform}: Not found.")
+
                 else:
                     if 200 <= response.status_code < 300:
                         print(f"[+] {platform}: Found! {url}")
@@ -161,3 +174,5 @@ def check_user_ids(user_ids):
 
 check_user_ids(user_ids)
 print("OSINT User ID Fetcher completed.")
+ 
+     
