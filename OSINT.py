@@ -67,18 +67,15 @@ def programosnt():
                 ("Pinterest", f"https://www.pinterest.com/{u}"),
                 ("Baidu", f"https://www.baidu.com/s?wd={u}"),
                 ("Alibaba", f"https://www.alibaba.com/member/{u}"),
-                ("Reddit", f"https://www.reddit.com/user/{u}"),
                 ("Tinder", f"https://tinder.com/@{u}"),
                 ("Bumble", f"https://bumble.com/@{u}"),
                 ("OkCupid", f"https://www.okcupid.com/profile/{u}"),
                 ("Hinge", f"https://hinge.co/{u}"),
-                ("Discord", f"https://discord.com/users/{u}"),
                 ("Signal", f"https://signal.me/#p/{u}"),
                 ("Clubhouse", f"https://www.joinclubhouse.com/@{u}"),
                 ("Viber", f"https://invite.viber.com/?g2={u}"),
                 ("Line", f"https://line.me/ti/p/{u}"),
                 ("WeChat", f"https://weixin.qq.com/r/{u}"),
-                ("Snapchat", f"https://www.snapchat.com/add/{u}"),
             ]
 
             for platform, url in urls:
